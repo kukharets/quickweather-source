@@ -59,7 +59,7 @@ class App extends React.Component {
       },
     } = this;
     const urlID = search && search.length > 1 && search.substr(1);
-    if (urlID !== selectedPlaceID) {
+    if (urlID && urlID !== selectedPlaceID) {
       actionSelectPlace({
         place_id: search.substr(1),
         structured_formatting: {},
