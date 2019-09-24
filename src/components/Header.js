@@ -7,7 +7,7 @@ function Header() {
     <div className="header">
       <span className="header-legend">
         <Typography className="header-text" color="primary">
-          Weather Record
+          Quick Weather
         </Typography>
         <Typography className="header-subtext" inline color="secondary">
           &nbsp;&nbsp;&nbsp;by Taras Kukharets
