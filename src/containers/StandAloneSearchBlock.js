@@ -24,7 +24,7 @@ class StandAloneSearchBlock extends React.Component {
   componentDidMount() {
     window.initMap = this.initMapCallback;
     const scriptEl = document.createElement(`script`);
-    scriptEl.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyC-voNFXmQyYabbnv3LtHqilJSYze0f7mI&callback=initMap&libraries=places&language=en`;
+    scriptEl.src = `https://maps.googleapis.com/maps/api/js?key=[DELETED BY AUTHOR]&callback=initMap&libraries=places&language=en`;
     document.querySelector(`body`).insertAdjacentElement(`beforeend`, scriptEl);
   }
 

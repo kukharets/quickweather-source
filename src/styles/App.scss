@@ -75,7 +75,15 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid lightslategray;;
+  border-bottom: 1px solid lightslategray;
+  &:hover {
+    background-color: rgb(245, 245, 245);
+  }
+}
+
+.last-menu-item {
+  border-bottom: none;
+  border-bottom-left-radius: 20px;
 }
 
 .share-block {
@@ -364,9 +372,13 @@
 .info-container {
   padding: 0 10px 5px 10px;
   position: fixed;
-  margin: 50px 0 0 20px,
+  margin: 50px 0 0 20px;
 }
 
 .error-text {
   color: map-get($palettePrimary, error)!important;
+}
+
+a {
+  text-decoration: none;
 }
