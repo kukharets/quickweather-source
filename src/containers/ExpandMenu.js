@@ -81,7 +81,7 @@ class ExpandMenu extends React.Component {
                 <span className="svg-background github-icon social-icon clickable-item" />
               </div>
             </a>
-            <a href="https://www.upwork.com/freelancers/~0169f6733a03d07859">
+            <a href="https://www.upwork.com/o/profiles/users/_~0169f6733a03d07859/?s=1110580755057594368">
               <div className="menu-item">
                 <Typography className="clickable-item" inline color="dark">
                   Visit author UpWork
