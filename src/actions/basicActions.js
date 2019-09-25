@@ -22,6 +22,8 @@ export const actionClearSuggestions = () => ({ type: CLEAN_SUGGESTIONS });
 export const actionSelectPlace = place => async dispatch => {
   if (place && place.place_id) {
     history.push(`?${place.place_id}`);
+  } else {
+    history.push('');
   }
   dispatch({
     type: SELECT_PLACE,
