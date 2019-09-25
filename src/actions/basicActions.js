@@ -93,27 +93,20 @@ export const actionGetPlaceDetails = placeID => dispatch => {
   );
   const request = {
     placeId: placeID,
-    fields: ['address_component', 'geometry'],
+    fields: ['formatted_address', 'geometry'],
   };
   placeService.getDetails(request, function(place = {}, status) {
     switch (status) {
       case window.google.maps.places.PlacesServiceStatus.OK: {
-        const {
-          address_components,
-          geometry: { location: { lat, lng } = {} } = {},
-        } = place;
-        const city = address_components[0].long_name;
-        const country =
-          address_components.length > 1 &&
-          address_components[address_components.length - 1].long_name;
+        const { geometry: { location: { lat, lng } = {} } = {} } = place;
         if (typeof lat === 'function' && typeof lng === 'function') {
           dispatch({
             type: GET_PLACE_DETAILS_REQUEST_SUCCESS,
             payload: {
               coordinates: { lat: lat(), lng: lng() },
               structured_formatting: {
-                main_text: city,
-                secondary_text: country,
+                main_text: place.formatted_address.split(',')[0],
+                secondary_text: place.formatted_address.split(/, (.+)/)[1],
               },
               forPlaceId: placeID,
             },

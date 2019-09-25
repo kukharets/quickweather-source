@@ -170,14 +170,19 @@ export default (state = INIT_STATE, action) => {
     }
     case GET_PLACE_DETAILS_REQUEST_SUCCESS: {
       const { selectedPlace } = state;
+      const {
+        structured_formatting: currentStructuredFormatting,
+        place_id: currentPlaceID,
+      } = selectedPlace;
       const { coordinates, forPlaceId, structured_formatting } = payload;
-      const isForCurrentPlace = selectedPlace.place_id === forPlaceId;
+      const isForCurrentPlace = currentPlaceID === forPlaceId;
       return {
         ...state,
         selectedPlace: isForCurrentPlace
           ? Object.assign({}, selectedPlace, {
               coordinates,
-              structured_formatting,
+              structured_formatting:
+                currentStructuredFormatting || structured_formatting,
               id: forPlaceId,
             })
           : selectedPlace,
