@@ -1,13 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider as ReduxProvider } from 'react-redux';
+import './views/styles/App.scss';
+
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { Provider } from 'react-redux';
-import App from './App';
-import './styles/App.scss';
-import index from './store';
+import App from './views/App';
+import store from './state/store';
 import 'react-perfect-scrollbar/dist/css/styles.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { history } from './helpers/history';
+import history from './utils/history';
 
 const theme = createMuiTheme({
   spacing: {
@@ -47,13 +49,14 @@ const theme = createMuiTheme({
   },
 });
 
-ReactDOM.render(
+const RootHtml = () => (
   <MuiThemeProvider theme={theme}>
-    <Provider store={index}>
+    <ReduxProvider store={store}>
       <Router history={history}>
-        <Route path="/" component={App} />
+        <App />
       </Router>
-    </Provider>
-  </MuiThemeProvider>,
-  document.getElementById('root'),
+    </ReduxProvider>
+  </MuiThemeProvider>
 );
+
+render(<RootHtml />, document.getElementById('react-root'));

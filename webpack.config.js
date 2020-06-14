@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const CSSModuleLoader = {
   loader: 'css-loader',
@@ -107,5 +108,6 @@ module.exports = {
         '!.gitattributes',
       ],
     }),
+    new Dotenv()
   ],
 };

@@ -4,10 +4,10 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.4.4",
     "@material-ui/core": "^3.9.3",
     "@svgr/webpack": "^4.3.0",
@@ -18,6 +18,7 @@
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^2.1.1",
     "detect-browser": "^4.7.0",
+    "dotenv-webpack": "^1.8.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.12.0",
@@ -31,12 +32,15 @@
     "react-scripts": "3.0.0",
     "react-social-sharing": "^3.0.1",
     "redux": "^4.0.1",
+    "redux-saga": "^1.1.1",
     "redux-thunk": "^2.3.0",
+    "redux-logger": "^3.0.6",
+    "redux-devtools-extension": "^2.13.8",
     "sass-loader": "^7.1.0",
     "webpack": "^4.30.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
+    "start": "webpack-dev-server  --public --mode development --open --hot",
     "build": "webpack --mode production"
   },
   "eslintConfig": {
@@ -60,10 +64,10 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-standard": "^4.0.0",
+    "jest": "^26.0.1",
     "prettier": "^1.17.0",
     "prop-types": "^15.7.2",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-logger": "^3.0.6",
+    "react-test-renderer": "^16.13.1",
     "svg-url-loader": "^2.3.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.3.1"

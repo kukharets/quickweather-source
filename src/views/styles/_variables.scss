@@ -1,0 +1,61 @@
+$color-sassy: #cc4397;
+$color-blue: #0059ff;
+$palettePrimary: (
+        main: #7ebc59,
+        ultralight: rgba(55, 140, 189, 0.29),
+        dark: #33363b,
+        error: #bc0400
+);
+$paletteSecondary: (
+        contrastText: #eaeaea,
+);
+
+@mixin for-desktop {
+  @media (min-width: 824px) {
+    @content
+  }
+}
+
+@mixin for-mobile-landscape {
+  @media (max-width: 823px) and (max-height: 414px) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin for-mobile-portrait {
+  @media (max-height: 823px) and (max-width: 414px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin for-device-portrait {
+  @media (max-width: 1024px) and (max-height: 1366px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+
+
+@mixin tablet-landscape-or-desktop {
+  @media (min-width: 824px) {
+    @content
+  }
+}
+
+@mixin for-mobile-any-and-laptop-portrait {
+  @media (max-width: 823px){
+    @content;
+  }
+  @media (orientation: portrait) and (max-width: 1024px){
+    @content;
+  }
+}
+
+@mixin for-mobile-any {
+  @media (orientation: landscape) and (max-width: 823px) and (max-height: 375px){
+    @content;
+  }
+  @media (orientation: portrait) and (max-width: 375px) and (max-height: 832px){
+    @content;
+  }
+}
