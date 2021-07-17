@@ -20,6 +20,7 @@ import {
   placeDetailsRequestSuccess,
   placeDetailsRequestError,
 } from './actions';
+import store from "../../store";
 
 const googlePlacesAutocompleteRequest = (value, service) =>
   new Promise((resolve, reject) => {
@@ -98,9 +99,7 @@ function* placesAutocompleteRequest({ payload }) {
 }
 
 function placeDetailsRequestCall(payload) {
-  const placeService = new window.google.maps.places.PlacesService(
-    document.createElement('div'),
-  );
+  const placeService = store.getState().googlePlacesServiceReducer.serviceObj;
   const request = {
     placeId: payload,
     fields: ['formatted_address', 'geometry'],

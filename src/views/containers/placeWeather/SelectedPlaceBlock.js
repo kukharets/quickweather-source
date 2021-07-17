@@ -12,7 +12,7 @@ function SelectedPlaceBlock({
   return (
     <div className={`weather ${listOpenState ? 'collapsed' : ''}`}>
       {place_id && !listOpenState && (
-        <PlaceHeader place={selectedPlace} withSaveButton withCloseButton />
+        <PlaceHeader weatherData={weatherData} place={selectedPlace} withSaveButton withCloseButton />
       )}
       {place_id && <WeatherDetailsBlock weatherData={weatherData} />}
     </div>

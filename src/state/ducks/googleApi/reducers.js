@@ -6,7 +6,7 @@ const googleMapsApiInitialState = {
 };
 
 const googlePlacesServiceInitialState = {
-  init: false,
+  serviceObj: null,
 };
 
 const googleMapsApiReducer = createReducer(googleMapsApiInitialState)({
@@ -18,8 +18,9 @@ const googleMapsApiReducer = createReducer(googleMapsApiInitialState)({
 const googlePlacesServiceReducer = createReducer(
   googlePlacesServiceInitialState,
 )({
-  [types.INIT_GOOGLE_PLACES_SERVICE_SUCCESS]: () => {
-    return { init: true };
+  [types.INIT_GOOGLE_PLACES_SERVICE_SUCCESS]: (state, action) => {
+    const { payload } = action;
+    return { serviceObj: payload };
   },
 });
 

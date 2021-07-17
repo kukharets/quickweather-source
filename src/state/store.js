@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
@@ -21,13 +21,21 @@ function configureStore(initialState) {
     ...searchBox,
     ...weatherReducer,
   });
+
+  if (process.env.REACT_APP_MODE === "DEV") {
+    return createStore(
+        rootReducer,
+        initialState,
+        composeWithDevTools(
+            applyMiddleware(sagaMiddleware),
+            applyMiddleware(logger),
+        ),
+    );
+  }
   return createStore(
-    rootReducer,
-    initialState,
-    composeWithDevTools(
+      rootReducer,
+      initialState,
       applyMiddleware(sagaMiddleware),
-      applyMiddleware(logger),
-    ),
   );
 }
 const store = configureStore(window.REDUX_INITIAL_DATA);

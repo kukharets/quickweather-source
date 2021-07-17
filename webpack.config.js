@@ -1,10 +1,16 @@
+const glob = require('glob')
 const path = require('path');
 const HWP = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+
+const PATHS = {
+  src: path.join(__dirname, 'src')
+}
 
 const CSSModuleLoader = {
   loader: 'css-loader',
@@ -35,7 +41,7 @@ module.exports = {
     filename: '[name].[hash].bundle.js',
     path: path.join(
       __dirname,
-      '../../../../taras/Documents/GitHub/kukharets.github.io',
+      'build',
     ),
   },
   module: {
@@ -81,7 +87,7 @@ module.exports = {
         loader: '@svgr/webpack',
       },
       {
-        test: /\.png$/,
+        test: /\.png|webp$/,
         loader: 'file-loader',
       },
     ],
@@ -97,6 +103,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
+    }),
+    new PurgeCSSPlugin({
+      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true })
     }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [

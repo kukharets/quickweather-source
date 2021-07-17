@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import { connect } from 'react-redux';
 import { isMobile, isTablet } from 'react-device-detect';
 import Content from './containers/Content';
@@ -9,6 +9,7 @@ import { mobileDevicesHeightCorrector } from '../utils/mobileDevicesHeightCorrec
 import history from '../utils/history';
 import { actionFetchWeatherStart } from '../state/ducks/weather/actions';
 import { actionSelectPlace } from '../state/ducks/places/actions';
+import backgroundImg from '../assets/background.webp';
 
 const App = ({
   loadGoogleMapsApiStart,
@@ -18,14 +19,11 @@ const App = ({
   googleMapsApiLoaded,
   selectedPlace = {},
 }) => {
-  useEffect(() => {
-    mobileDevicesHeightCorrector();
+  useLayoutEffect(() => {
+    mobileDevicesHeightCorrector(true);
     loadGoogleMapsApiStart();
     recordDeviceType({
       isDesktop: !isTablet && !isMobile,
-    });
-    window.addEventListener('resize', () => {
-      mobileDevicesHeightCorrector();
     });
   }, []);
 
@@ -42,8 +40,29 @@ const App = ({
     }
   }, [googleMapsApiLoaded]);
 
+  const appRef = useRef();
+
+  const [loadedBG, setLoadedBG] = useState(false);
+  useEffect(() => {
+      if (!loadedBG) {
+        const handleLoad = () => {
+          setLoadedBG(true);
+        };
+        const image = new Image();
+        image.addEventListener('load', handleLoad);
+        image.src = backgroundImg;
+        return () => {
+          image.removeEventListener('load', handleLoad);
+        };
+      } else {
+        appRef.current.style.background=`url('${backgroundImg}') no-repeat center center fixed`;
+      }
+  }, [loadedBG]);
+
+
+
   return (
-    <div className="app">
+    <div ref={appRef} className='app'>
       <Header />
       <Content />
     </div>

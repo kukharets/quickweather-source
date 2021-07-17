@@ -24,6 +24,7 @@ const PlaceHeader = ({
   switchListOpenState,
   actionSavePlace,
   actionRemovePlace,
+  weatherData
 }) => {
   const isDesktop = useMediaQuery({ minWidth: 824 });
   const selectPlace = () => {
@@ -59,7 +60,7 @@ const PlaceHeader = ({
   } = place;
 
   const { sky: { image } = {}, temperature: { value: temperatureValue } = {} } =
-    weather || {};
+  weatherData || {};
 
   return (
     <div
