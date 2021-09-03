@@ -7,6 +7,7 @@ const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const PATHS = {
   src: path.join(__dirname, 'src')
@@ -93,6 +94,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new CopyWebpackPlugin([
       {
         from: path.join(__dirname, '/src/assets/quickweather.ico'),

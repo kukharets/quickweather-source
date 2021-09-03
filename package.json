@@ -19,7 +19,8 @@
     "react-social-sharing": "^3.0.1",
     "redux": "^4.0.1",
     "redux-saga": "^1.1.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "webpack-bundle-analyzer": "^4.4.2"
   },
   "scripts": {
     "start": "webpack-dev-server  --public --mode development --open --hot",

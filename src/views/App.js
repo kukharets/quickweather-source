@@ -28,7 +28,7 @@ const App = ({
   }, []);
 
   useEffect(() => {
-    const { location: { search } = {} } = history;
+    const { location: { search } = {} } = window;
     if (googleMapsApiLoaded) {
       const place_id = search && search.substr(1);
       const { place_id: selectedPlaceID, coordinates } = selectedPlace;
