@@ -16,10 +16,11 @@ const App = ({
   actionSelectPlace,
   actionRecordLayoutType,
 }) => {
+  const { location: { search } = {} } = useLocation();
+
   useLayoutEffect(() => {
     actionLoadGoogleMapsApiStart();
   }, []);
-  const { location: { search } = {} } = useLocation();
 
   useEffect(() => {
     if (googleMapsApiLoaded) {
@@ -54,7 +55,7 @@ const App = ({
 
   return (
     <div className="app">
-      <Star />
+      <Header />
       <Content />
     </div>
   );

@@ -1,5 +1,6 @@
-@import 'variables';
-@import 'svgs';
+@import '_common';
+@import '_svgs';
+@import '_header';
 
 * {
   margin: 0;
@@ -7,6 +8,11 @@
 }
 
 .app {
+  font-size: 1.5rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.33;
+  letter-spacing: 0em;
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
   max-height: 100%;
@@ -17,23 +23,9 @@
   background-image: url("../../assets/sun-tornado.svg");
 }
 
-.header {
-  width: 100vw;
-  z-index: 100;
-  align-items: center;
-  display: grid;
-  grid-template-columns: max-content auto max-content;
-  background-color: #f5f5f5;
-  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
-}
 
-.header-legend {
-  display: flex;
-  align-items: baseline;
-  @include for-mobile-portrait {
-    flex-direction: column;
-  }
-}
+
+
 
 .menu-buttons {
   svg {
@@ -97,29 +89,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-}
-
-.header-text {
-  margin-left: 5vmin!important;
-  font-size: 24px!important;
-  @include for-mobile-landscape {
-    font-size: 7vh!important;
-  }
-  @include for-mobile-portrait {
-    margin: 0 0 0 3vmin!important;
-    font-size: 3vh!important;
-  }
-}
-
-.header-subtext {
-  font-size: 24px;
-  @include for-mobile-landscape {
-    font-size: 5vh!important;
-  }
-  @include for-mobile-portrait {
-    margin-top: -10px!important;
-    font-size: 2vh!important;
-  }
 }
 
 

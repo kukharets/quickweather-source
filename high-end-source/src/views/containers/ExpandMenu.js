@@ -24,11 +24,11 @@ function ExpandMenu({ isDesktopLayout, mainText }) {
     setMenuOpenState(false);
     setShareOpenState(!shareOpenState);
   };
+//ToDo check isDesktopLayout if need
 
   return (
     <div className="menu-buttons">
       <ShareIcon onClick={switchShareOpenState} className="header-button" />
-      //ToDo check isDesktopLayout if need
       <MenuIcon
         onClick={switchMenuOpenState}
         className={`header-button${isDesktopLayout ? '_desktop' : ''}`}

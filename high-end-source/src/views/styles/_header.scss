@@ -1,0 +1,39 @@
+@import 'variables';
+
+.header {
+    width: 100%;
+    font-size: 24px;
+    z-index: 10;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.header-legend {
+    display: flex;
+    align-items: baseline;
+    @include for-mobile-portrait {
+        flex-direction: column;
+    }
+}
+
+.header-text {
+    margin-left: 5vmin;
+    @include for-mobile-landscape {
+        font-size: 70%;
+    }
+    @include for-mobile-portrait {
+        margin: 0 0 0 3vmin;
+        font-size: 40%;
+    }
+}
+
+.header-subtext {
+    font-size: 24px;
+    @include for-mobile-landscape {
+        font-size: 5vh;
+    }
+    @include for-mobile-portrait {
+        margin-top: -10px;
+        font-size: 2vh;
+    }
+}
