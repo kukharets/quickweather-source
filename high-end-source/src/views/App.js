@@ -2,11 +2,12 @@ import React, { useEffect, useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import Content from './containers/Content';
+import Header from './components/Header';
 import { actionRecordLayoutType } from '../state/ducks/common/actions';
 import { actionLoadGoogleMapsApiStart } from '../state/ducks/googleApi/actions';
-import Header from './components/Header';
 import { actionFetchWeatherStart } from '../state/ducks/weather/actions';
 import { actionSelectPlace } from '../state/ducks/places/actions';
+import Star from '../assets/star.svg';
 
 const App = ({
   googleMapsApiLoaded,
@@ -30,24 +31,22 @@ const App = ({
     }
   }, [googleMapsApiLoaded]);
 
+  const calculateLayoutType = () => {
+    const windowWidth = window.innerWidth;
+    if (windowWidth <= 824) {
+      return { isMobile: true };
+    }
+    return { isDesktop: true };
+  };
+
+  const handleResize = () => {
+    actionRecordLayoutType(calculateLayoutType());
+  };
+
   // ToDo move to custom hook for cleanup App code
   useLayoutEffect(() => {
-    const calculateLayoutType = () => {
-      const windowWidth = window.innerWidth;
-      if (windowWidth <= 824) {
-        return { isMobile: true };
-      }
-      return { isDesktop: true };
-    };
-
     actionRecordLayoutType(calculateLayoutType());
-
-    const handleResize = () => {
-      actionRecordLayoutType(calculateLayoutType());
-    };
-
     window.addEventListener('resize', handleResize);
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -55,7 +54,7 @@ const App = ({
 
   return (
     <div className="app">
-      <Header />
+      <Star />
       <Content />
     </div>
   );

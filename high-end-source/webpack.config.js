@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './index.js',
@@ -16,10 +18,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
         },
       },
       {
@@ -28,14 +31,53 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [['postcss-preset-env']],
+              },
+            },
+          },
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        oneOf: [
+          {
+            use: [
+              {
+                loader: '@svgr/webpack',
+                options: {
+                  prettier: false,
+                  svgo: true,
+                  svgoConfig: {
+                    plugins: [{ removeViewBox: false }],
+                  },
+                  titleProp: true,
+                },
+              },
+            ],
+            issuer: {
+              and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
+            },
+          },
+        ],
       },
     ],
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html',
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
     }),
   ],
 };

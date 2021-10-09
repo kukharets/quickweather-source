@@ -34,15 +34,14 @@ const TextFieldWithDelay = ({
   };
 
   return (
-    <div className="text-search-field">
       <input
+        className="text-search-field"
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
         label={label}
         type="text"
       />
-    </div>
   );
 };
 
