@@ -1,39 +1,98 @@
 @import 'variables';
 
 .header {
-    width: 100%;
-    font-size: 24px;
-    z-index: 10;
-    background-color: #f5f5f5;
-    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+  height: 50px;
+  z-index: 10;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  padding: 0 20px;
+  position: relative;
+  @include for-mobile-portrait {
+    padding: 0 15px 0 10px;
+  }
 }
 
 .header-legend {
+  display: flex;
+  align-items: baseline;
+  font-size: 24px;
+  line-height: 1.33;
+  @include for-mobile-portrait {
+    padding-top: 4px;
+    flex-direction: column;
+    line-height: 16px;
+  }
+
+  :first-child {
+    color: $color-main-lightblue;
+    @include for-mobile-portrait {
+      font-size: 80%;
+    }
+  }
+
+  :last-child {
+    font-size: 60%;
+    color: $color-second-green;
+    margin-left: 10px;
+    @include for-mobile-portrait {
+      margin-left: 0;
+      font-size: 45%;
+    }
+  }
+}
+
+.menu-buttons {
+  width: 80px;
+  font-size: 14px;
+  svg {
+    cursor: pointer;
+  }
+}
+
+.share-block, .links-list {
+  top: 50px;
+  background-color: rgba(245, 245, 245, 0.86);
+  border: 1px solid map-get($colors, dark);
+  border-top: none;
+  border-right: none;
+  right: 0;
+  position: fixed;
+  z-index: 10;
+}
+
+.links-list {
+  border-bottom-left-radius: 20px;
+  .links-item {
+    height: 40px;
     display: flex;
-    align-items: baseline;
-    @include for-mobile-portrait {
-        flex-direction: column;
+    padding: 3px 3px 3px 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightslategray;
+    &:hover {
+      background-color: rgb(245, 245, 245);
     }
+  }
+  a:last-child {
+    .links-item {
+      border-bottom: none;
+      border-bottom-left-radius: 20px;
+    }
+  }
 }
 
-.header-text {
-    margin-left: 5vmin;
-    @include for-mobile-landscape {
-        font-size: 70%;
-    }
-    @include for-mobile-portrait {
-        margin: 0 0 0 3vmin;
-        font-size: 40%;
-    }
-}
-
-.header-subtext {
-    font-size: 24px;
-    @include for-mobile-landscape {
-        font-size: 5vh;
-    }
-    @include for-mobile-portrait {
-        margin-top: -10px;
-        font-size: 2vh;
-    }
+.share-block {
+  padding-top: 10px;
+  border-bottom-left-radius: 5px;
+  .share-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    font-size: 16px;
+  }
+  .share-title {
+    max-width: 315px;
+    padding: 0 10px;
+  }
 }

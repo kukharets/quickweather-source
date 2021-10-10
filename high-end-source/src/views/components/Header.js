@@ -3,12 +3,10 @@ import ExpandMenu from '../containers/ExpandMenu';
 
 function Header() {
   return (
-    <div className="header d-flex align-center justify-between">
+    <div className="header flex-align-center flex-justify-between">
       <span className="header-legend">
-        <span className="header-text">Quick Weather</span>
-        <span className="header-subtext">
-          &nbsp;&nbsp;&nbsp;by Taras Kukharets
-        </span>
+        <span>Quick Weather</span>
+        <span>by Taras Kukharets</span>
       </span>
       <ExpandMenu />
     </div>

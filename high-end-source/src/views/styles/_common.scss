@@ -2,10 +2,21 @@
    display: flex;
  }
 
- .align-center {
+ .flex-justify-center {
+   @extend .d-flex;
+   justify-content: center;
+ }
+
+ .flex-align-center {
+   @extend .d-flex;
    align-items: center;
  }
 
- .justify-between {
+ .flex-justify-between {
+   @extend .d-flex;
    justify-content: space-between;
+ }
+
+ .text-center {
+   text-align: center;
  }

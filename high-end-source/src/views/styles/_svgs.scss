@@ -79,12 +79,21 @@
 }
 
 .header-button {
-  margin-left: 5px;
-  &_desktop {
-    cursor: pointer;
-    path:hover{
-      fill: map-get($palettePrimary, main);
+  padding: 5px;
+  margin: -5px;
+  cursor: pointer;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+  @media (hover: hover) {
+    &:hover {
+      animation-name: ckw;
+      fill: $color-main-lightblue;
     }
+  }
+  &.opened {
+    animation-name: ckw;
+    fill: $color-main-lightblue;
   }
 }
 
