@@ -1,6 +1,7 @@
 @import '_common';
 @import '_svgs';
 @import '_header';
+@import '_input';
 
 * {
   margin: 0;
@@ -45,12 +46,6 @@ a {
   position: relative;
 }
 
-.text-search-field {
-  max-height: 48px;
-  @include tablet-landscape-or-desktop {
-    grid-row: 1;
-  }
-}
 
 .suggestion-list {
   position: absolute!important;

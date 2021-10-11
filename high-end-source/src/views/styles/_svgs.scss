@@ -87,12 +87,12 @@
   transform-origin: 50% 50%;
   @media (hover: hover) {
     &:hover {
-      animation-name: ckw;
+      animation-name: circle-move;
       fill: $color-main-lightblue;
     }
   }
   &.opened {
-    animation-name: ckw;
+    animation-name: circle-move;
     fill: $color-main-lightblue;
   }
 }

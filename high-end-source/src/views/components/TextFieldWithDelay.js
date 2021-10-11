@@ -34,14 +34,24 @@ const TextFieldWithDelay = ({
   };
 
   return (
+    <div className="text-field-wrapper">
       <input
+        id="search-place"
+        aria-invalid="false"
+        placeholder="...just start typing"
+        type="search"
         className="text-search-field"
-        value={value}
         onChange={handleChange}
-        placeholder={placeholder}
-        label={label}
-        type="text"
+        value={value}
       />
+      <label
+        htmlFor="search-place"
+        data-shrink="true"
+        className={value ? 'fixed' : ''}
+      >
+        Find place for get weather
+      </label>
+    </div>
   );
 };
 
