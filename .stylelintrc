@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-styled-components",
+    "stylelint-config-recess-order"
+  ],
+  "customSyntax": "postcss-styled-syntax",
+  "overrides": [
+    {
+      "files": ["**/*.scss", "**/*.css"],
+      "rules": {
+        "indentation": [2, { "except": ["block"] }],
+        "no-missing-end-of-source-newline": true,
+        "declaration-block-no-duplicate-properties": null,
+        "declaration-block-no-ignored-properties": null,
+        "declaration-block-no-redundant-longhand-properties": null,
+        "declaration-block-no-shorthand-property-overrides": null
+      }
+    }
+  ]
+}
+
+
