@@ -7,6 +7,7 @@ import { selectSelectedPlace } from '../selectors/app';
 import { HeaderLegend, HeaderWrapper } from './Header.styles';
 export const Header = () => {
   const selectedPlace = useSelector(selectSelectedPlace);
+
   return (
     <HeaderWrapper>
       <HeaderLegend>

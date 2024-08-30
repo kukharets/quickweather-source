@@ -33,21 +33,15 @@ export const PlaceCard = ({
   isLoading: boolean;
 }) => {
   const dispatch = useDispatch();
+
   const isBookmarked = useSelector(selectIsPlaceBookmarked(data.place_id));
-
   const { isWeatherDataLoading, parsedWeatherData } = useWeather({ location: data });
-  console.log(parsedWeatherData);
-  const handleToggleBookmark = () => {
-    dispatch(actionToggleBookmarkPlace(data));
-  };
 
+  const handleSelectPlace = () => dispatch(actionSelectPlace(data));
+  const handleToggleBookmark = () => dispatch(actionToggleBookmarkPlace(data));
   const handleClosePlaceCard = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.stopPropagation();
     dispatch(actionResetSelectedPlace());
-  };
-
-  const handleSelectPlace = () => {
-    dispatch(actionSelectPlace(data));
   };
 
   return (

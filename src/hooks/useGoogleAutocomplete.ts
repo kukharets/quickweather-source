@@ -3,11 +3,13 @@ import { useServices } from '../providers/ServicesProvider';
 import { IGoogleAutocompletePredictionPlace } from '../slices/app';
 
 export const useGoogleAutocomplete = () => {
+  const [predictions, setPredictions] = useState<IGoogleAutocompletePredictionPlace[]>([]);
+  const handleCleanPredictions = () => setPredictions([]);
+
   const { autocompleteService } = useServices();
 
-  const [predictions, setPredictions] = useState<IGoogleAutocompletePredictionPlace[]>([]);
-  const serviceGetPlacePredictions = async (input: string): Promise<IGoogleAutocompletePredictionPlace[]> => {
-    return new Promise((resolve) => {
+  const serviceGetPlacePredictions = async (input: string): Promise<IGoogleAutocompletePredictionPlace[]> =>
+    new Promise((resolve) => {
       autocompleteService?.getPlacePredictions({ input, types: ['(cities)'] }, (predictions, status) => {
         switch (status) {
           case window.google.maps.places.PlacesServiceStatus.OK:
@@ -21,10 +23,6 @@ export const useGoogleAutocomplete = () => {
         }
       });
     });
-  };
-  const handleCleanPredictions = () => {
-    setPredictions([]);
-  };
 
   const handleGetPlacePredictionsCallback = async (value: string) => {
     const predictions = await serviceGetPlacePredictions(value);

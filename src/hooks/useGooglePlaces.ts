@@ -3,8 +3,9 @@ import { IGoogleAutocompletePredictionPlace } from '../slices/app';
 import { useState } from 'react';
 
 export const useGooglePlaces = () => {
-  const { placesService } = useServices();
   const [isLoading, setIsLoading] = useState(false);
+  const { placesService } = useServices();
+
   const handleGetPlaceDetails = (place: IGoogleAutocompletePredictionPlace): Promise<{ lat: number; lng: number }> => {
     setIsLoading(true);
     return new Promise((resolve, reject) => {

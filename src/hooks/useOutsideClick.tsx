@@ -11,7 +11,6 @@ export const useOutsideClick = ({ handler }: { handler: () => void }) => {
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };

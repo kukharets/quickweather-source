@@ -16,14 +16,10 @@ export const PlacesSearchAutocomplete = ({
 }: {
   handleSelectPlace: (place: IGooglePlaceFull) => void;
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState('');
 
-  const inputRef = useRef<HTMLInputElement>(null);
   const { predictions, handleCleanPredictions, handleGetPlacePredictionsCallback } = useGoogleAutocomplete();
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    handleGetPlacePredictionsCallback(e.target.value);
-  };
 
   useLayoutEffect(() => {
     inputRef.current?.focus();
@@ -33,6 +29,11 @@ export const PlacesSearchAutocomplete = ({
     handleSelectPlace(place);
     handleCleanPredictions();
     setValue(`${place.structured_formatting.main_text}, ${place.structured_formatting.secondary_text}`);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+    handleGetPlacePredictionsCallback(e.target.value);
   };
 
   const handleClearInput = () => {
