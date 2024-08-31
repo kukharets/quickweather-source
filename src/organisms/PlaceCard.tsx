@@ -3,14 +3,14 @@ import {
   IGooglePlaceFull,
   actionResetSelectedPlace,
   actionSelectPlace,
-} from '../slices/app';
-import { TextLarge, theme } from '../containers/App.styles';
+} from '@slices/app';
+import { TextLarge, theme } from '@containers/App.styles';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsPlaceBookmarked } from '../selectors/app';
+import { selectIsPlaceBookmarked } from '@selectors/app';
 import React from 'react';
-import { useWeather } from '../hooks/useWeather';
-import { WeatherSquareItem } from '../atoms/WeatherSquareItem';
+import { useWeather } from '@hooks/useWeather';
+import { WeatherSquareItem } from '@atoms/WeatherSquareItem';
 import {
   CloseIcon,
   Divider,

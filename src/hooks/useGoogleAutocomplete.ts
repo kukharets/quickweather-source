@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useServices } from '../providers/ServicesProvider';
-import { IGoogleAutocompletePredictionPlace } from '../slices/app';
+import { IGoogleAutocompletePredictionPlace } from '@slices/app';
+import { useServices } from '@providers/ServicesProvider';
 
 export const useGoogleAutocomplete = () => {
   const [predictions, setPredictions] = useState<IGoogleAutocompletePredictionPlace[]>([]);

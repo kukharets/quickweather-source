@@ -1,14 +1,14 @@
-import { IGooglePlaceFull } from '../slices/app';
+import { IGooglePlaceFull } from '@slices/app';
 import {
   selectPlaceWeatherByPlaceId,
   selectPlaceWeatherErrorByPlaceId,
   selectPlaceWeatherIsLoadingByPlaceId,
-} from '../selectors/weather';
+} from '@selectors/weather';
 import { useEffect } from 'react';
-import { fetchPlaceWeather } from '../slices/weather';
+import { fetchPlaceWeather } from '@slices/weather';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../store';
-import { parseWeather } from '../utils/parseWeatherData';
+import { parseWeather } from '@utils/parseWeatherData';
 
 export const useWeather = ({ location }: { location: IGooglePlaceFull }) => {
   const dispatch: AppDispatch = useDispatch();

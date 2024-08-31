@@ -1,9 +1,9 @@
 /// <reference types="vite-plugin-svgr/client" />
 import styled from 'styled-components';
-import GitHubIcon from '../assets/github.svg';
-import LinkedInIcon from '../assets/in.png';
-import UpWorkIcon from '../assets/upwork.svg';
-import { TextBasic } from '../containers/App.styles';
+import GitHubIcon from '@assets/github.svg';
+import LinkedInIcon from '@assets/in.png';
+import UpWorkIcon from '@assets/upwork.svg';
+import { TextBasic } from '@containers/App.styles';
 
 export const HeaderMenuButtons = styled.span`
   display: flex;

@@ -1,15 +1,15 @@
-import { Header } from '../organisms/Header';
-import { PlacesSearchAutocomplete } from '../organisms/PlacesSearchAutocomplete';
+import { Header } from '@organisms/Header';
+import { PlacesSearchAutocomplete } from '@organisms/PlacesSearchAutocomplete';
 import {
   IGoogleAutocompletePredictionPlace,
   IGooglePlaceFull,
   actionSelectPlace,
   actionUpdateSelectedPlaceData,
-} from '../slices/app';
+} from '@slices/app';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGooglePlaces } from '../hooks/useGooglePlaces';
-import { selectBookmarkedPlaces, selectSelectedPlace } from '../selectors/app';
-import { PlaceCard } from '../organisms/PlaceCard';
+import { useGooglePlaces } from '@hooks/useGooglePlaces';
+import { selectBookmarkedPlaces, selectSelectedPlace } from '@selectors/app';
+import { PlaceCard } from '@organisms/PlaceCard';
 import { AppWrapper, BookmarkedPlacesWrapper, MainPageLayout } from './App.styles';
 
 export const App = () => {

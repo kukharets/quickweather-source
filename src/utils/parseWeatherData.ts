@@ -1,4 +1,4 @@
-import { WeatherData } from '../slices/weather';
+import { WeatherData } from '@slices/weather';
 import {
   DayCloud0,
   DayCloud1,

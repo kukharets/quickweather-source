@@ -1,8 +1,8 @@
 /// <reference types="vite-plugin-svgr/client" />
 import React, { useState } from 'react';
-import MenuIcon from '../assets/menu.svg?react';
-import ShareIcon from '../assets/share.svg?react';
-import { TextSmall } from '../containers/App.styles';
+import MenuIcon from '@assets/menu.svg?react';
+import ShareIcon from '@assets/share.svg?react';
+import { TextSmall } from '@containers/App.styles';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -14,7 +14,7 @@ import {
 } from 'react-share';
 
 import { FacebookIcon, TwitterIcon, WhatsappIcon } from 'react-share';
-import { useOutsideClick } from '../hooks/useOutsideClick';
+import { useOutsideClick } from '@hooks/useOutsideClick';
 import {
   HeaderMenuButtons,
   HoverableButton,
