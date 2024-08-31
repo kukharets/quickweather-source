@@ -9,23 +9,17 @@ In 2024, I revisited this project with a fresh perspective, bringing with me yea
 
 ### What's New:
 
-- **React 18 Integration**: The project has been upgraded to React 18.3.1, taking advantage of features like concurrent rendering and automatic batching, which enhance the app's performance and responsiveness.
-
 - **Redux Toolkit Adoption**: State management is now streamlined using `@reduxjs/toolkit`, reducing boilerplate and improving maintainability.
 
-- **Vite for Development**: The project now uses Vite (5.4.1) as the build tool, dramatically improving the development experience with faster builds and instant hot module replacement.
+- **Vite for Development**: The project now uses Vite as the build tool, dramatically improving the development experience with faster builds and instant hot module replacement.
 
-- **Enhanced Styling**: Upgraded to `styled-components` 6.1.12 to utilize the latest CSS-in-JS capabilities, making the styling more dynamic and maintainable.
-
-- **Modernized Routing**: Implemented the latest version of `react-router-dom` (6.26.1), providing more intuitive and flexible routing.
+- **Enhanced Styling**: Upgraded to `styled-components` to utilize the latest CSS-in-JS capabilities, making the styling more dynamic and maintainable.
 
 - **TypeScript and ESLint Integration**: Improved type safety and code quality with TypeScript, and enforced best practices using ESLint along with TypeScript-specific linting.
 
 ### Looking Ahead:
 
-This project continues to evolve, and I’m currently working on a Next.js version, which will bring enhanced performance, SEO optimization, and server-side rendering capabilities. This upcoming iteration aims to push the boundaries further, building on the solid foundation laid by this refactored version.
-
-Thank you for following the journey of this project. I hope it remains a valuable resource for both developers and end-users.
+I’m currently working on a Next.js version, which will bring enhanced performance, SEO optimization, and server-side rendering capabilities. This upcoming iteration aims to push the boundaries further, building on the solid foundation laid by this refactored version.
 
 **June 2020 update:**
 
