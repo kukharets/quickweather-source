@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import GitHubIcon from '@assets/github.svg';
 import LinkedInIcon from '@assets/in.png';
 import UpWorkIcon from '@assets/upwork.svg';
-import { TextBasic } from '@containers/App.styles';
+import { TextBasic } from '@root/App.styles';
 
 export const HeaderMenuButtons = styled.span`
   display: flex;

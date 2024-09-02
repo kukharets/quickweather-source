@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import BackGroundIcon from '../assets/background.webp';
+import BackGroundIcon from '@assets/background.webp';
 
 export const animations = {
   rotate: keyframes`

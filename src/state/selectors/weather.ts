@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '../store';
+import { RootState } from '@root//store';
 
 export const selectPlaceWeatherByPlaceId = (placeId: string) =>
   createSelector(

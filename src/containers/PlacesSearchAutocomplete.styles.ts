@@ -2,7 +2,7 @@
 import CrossIcon from '@assets/cross-circle.svg?react';
 
 import styled from 'styled-components';
-import { animations, TextBasic } from '@containers/App.styles';
+import { animations, TextBasic } from '@root/App.styles';
 
 export const PlacesSearchWrapper = styled.div`
   min-width: 350px;

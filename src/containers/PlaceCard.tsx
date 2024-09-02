@@ -4,13 +4,13 @@ import {
   actionResetSelectedPlace,
   actionSelectPlace,
 } from '@slices/app';
-import { TextLarge, theme } from '@containers/App.styles';
+import { TextLarge, theme } from '@root/App.styles';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsPlaceBookmarked } from '@selectors/app';
 import React from 'react';
 import { useWeather } from '@hooks/useWeather';
-import { WeatherSquareItem } from '@atoms/WeatherSquareItem';
+import { WeatherSquareItem } from '../components/WeatherSquareItem';
 import {
   CloseIcon,
   Divider,

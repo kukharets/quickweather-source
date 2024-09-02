@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import MenuIcon from '@assets/menu.svg?react';
 import ShareIcon from '@assets/share.svg?react';
-import { TextSmall } from '@containers/App.styles';
+import { TextSmall } from '@root/App.styles';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -22,8 +22,8 @@ import {
   ShareBlockWrapper,
   ShareIconsWrapper,
   SocialIcon,
-} from './ExpandMenu.styles';
-export const ExpandMenu = ({ selectedPlaceTitle = '' }) => {
+} from './HeaderMenu.styles';
+export const HeaderMenu = ({ selectedPlaceTitle = '' }) => {
   const [menuOpenState, setMenuOpenState] = useState(false);
   const [shareOpenState, setShareOpenState] = useState(false);
 

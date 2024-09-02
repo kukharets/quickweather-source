@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import styled from 'styled-components';
-import { TextBasic } from '@containers/App.styles';
+import { TextBasic } from '@root/App.styles';
 
 const ErrorMessage = styled(TextBasic)`
   position: absolute;

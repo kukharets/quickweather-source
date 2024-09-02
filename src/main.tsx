@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
-import { App } from '@containers/App';
+import { App } from '@root/App';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '@containers/App.styles';
+import { theme } from '@root/App.styles';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store';
 import { Provider } from 'react-redux';

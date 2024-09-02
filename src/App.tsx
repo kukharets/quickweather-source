@@ -1,5 +1,5 @@
-import { Header } from '@organisms/Header';
-import { PlacesSearchAutocomplete } from '@organisms/PlacesSearchAutocomplete';
+import { Header } from '@containers/Header';
+import { PlacesSearchAutocomplete } from '@containers/PlacesSearchAutocomplete';
 import {
   IGoogleAutocompletePredictionPlace,
   IGooglePlaceFull,
@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useGooglePlaces } from '@hooks/useGooglePlaces';
 import { selectBookmarkedPlaces, selectSelectedPlace } from '@selectors/app';
-import { PlaceCard } from '@organisms/PlaceCard';
+import { PlaceCard } from '@containers/PlaceCard';
 import { AppWrapper, BookmarkedPlacesWrapper, MainPageLayout } from './App.styles';
 
 export const App = () => {
