@@ -6,7 +6,9 @@ export const useGooglePlaces = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { placesService } = useServices();
 
-  const handleGetPlaceDetails = (place: IGoogleAutocompletePredictionPlace): Promise<{ lat: number; lng: number }> => {
+  const handleGetPlaceDetails = (
+    place: IGoogleAutocompletePredictionPlace | { place_id: string },
+  ): Promise<{ lat: number; lng: number }> => {
     setIsLoading(true);
     return new Promise((resolve, reject) => {
       placesService?.getDetails({ placeId: place.place_id }, (placeResult, status) => {

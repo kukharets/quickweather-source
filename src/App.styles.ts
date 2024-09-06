@@ -93,10 +93,15 @@ export const ScrollableDiv = styled.div`
   }
 `;
 
-
 export const AppWrapper = styled.div`
   width: 100vw;
   background: url('${BackGroundIcon}') center center / cover no-repeat fixed;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.phone}) {
+    min-height: 200vh;
+    max-height: 200vh;
+    overflow: scroll;
+  }
 `;
 
 export const MainPageLayout = styled.div`
@@ -113,21 +118,34 @@ export const MainPageLayout = styled.div`
     flex-direction: column;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.phone}) {
+    display: block;
+    position: fixed;
+    height: 100%;
+    width: 100%;
     padding: 0;
+    & > * {
+      flex: auto;
+    }
   }
 `;
 
-export const BookmarkedPlacesWrapper = styled(ScrollableDiv)<{ $isFullVariant: boolean }>`
+export const BookmarkedPlacesWrapper = styled.div<{ $isFullVariant: boolean }>`
   max-height: calc(100vh - 100px);
   gap: 15px;
   display: flex;
+  margin-top: 85px;
+
   flex-direction: column;
   @media (max-width: ${({ theme }) => theme.breakpoints.phone}) {
+    margin-top: 100px;
+    overflow: scroll;
     padding: 0;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    flex-grow: 1; /* Займає всю решту висоти */
-    overflow-y: auto; /* Включає вертикальне прокручування, якщо контент перевищує висоту */
-    min-height: 0; /* Важливо для того, щоб flex працював коректно */
+    flex-grow: 1;
+    min-height: 0;
   }
+`;
+export const SearchSectionWrapper = styled.div`
+  margin-top: 55px;
 `;

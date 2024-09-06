@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface IGoogleAutocompletePredictionPlace {
   place_id: string;
-  structured_formatting: {
+  structured_formatting?: {
     main_text: string;
     secondary_text: string;
   };

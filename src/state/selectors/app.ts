@@ -5,7 +5,12 @@ const selectAppState = (state: RootState) => state.app;
 
 export const selectSelectedPlace = createSelector([selectAppState], (appState) => appState.selectedPlace);
 
-export const selectBookmarkedPlaces = createSelector([selectAppState], (appState) => appState.bookmarkedPlaces);
+export const selectBookmarkedPlaces = createSelector(
+  [selectAppState, selectSelectedPlace],
+  (appState, selectedPlace) => {
+    return appState.bookmarkedPlaces.filter((place) => place.place_id !== selectedPlace?.place_id);
+  },
+);
 
 export const selectIsPlaceBookmarked = (place_id: string) =>
   createSelector(

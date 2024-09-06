@@ -29,7 +29,7 @@ export const PlacesSearchAutocomplete = ({
   const handleSelectPrediction = (place: IGoogleAutocompletePredictionPlace) => {
     handleSelectPlace(place);
     handleCleanPredictions();
-    setValue(`${place.structured_formatting.main_text}, ${place.structured_formatting.secondary_text}`);
+    setValue(`${place.structured_formatting?.main_text}, ${place.structured_formatting?.secondary_text}`);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +52,7 @@ export const PlacesSearchAutocomplete = ({
       </InputWrapper>
       {predictions.map((prediction) => (
         <PredictionItem onClick={() => handleSelectPrediction(prediction)} key={prediction.place_id}>
-          {prediction?.structured_formatting.main_text}, {prediction?.structured_formatting.secondary_text}
+          {prediction?.structured_formatting?.main_text}, {prediction?.structured_formatting?.secondary_text}
         </PredictionItem>
       ))}
     </PlacesSearchWrapper>

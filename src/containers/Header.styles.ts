@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
   display: flex;
+  position: fixed;
+  width: 100%;
   height: 55px;
   align-items: center;
   justify-content: space-between;
@@ -13,10 +15,9 @@ export const HeaderWrapper = styled.div`
     0 1px 10px 0 rgb(0 0 0 / 12%);
   margin-bottom: 20px;
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.phone}) {
-        margin-bottom: 0;
-
-    }
+  @media (max-width: ${({ theme }) => theme.breakpoints.phone}) {
+    margin-bottom: 0;
+  }
 `;
 
 export const HeaderLegend = styled.span`

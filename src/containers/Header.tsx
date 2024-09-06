@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextLarge, TextSmall } from '@root/App.styles';
 import { theme } from '@root/App.styles';
-import { HeaderMenu } from '../components/HeaderMenu';
+import { HeaderMenu } from '@components/HeaderMenu';
 import { useSelector } from 'react-redux';
 import { selectSelectedPlace } from '@selectors/app';
 import { HeaderLegend, HeaderWrapper } from './Header.styles';

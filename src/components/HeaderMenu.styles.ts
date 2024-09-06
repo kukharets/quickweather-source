@@ -10,6 +10,7 @@ export const HeaderMenuButtons = styled.span`
   justify-content: end;
   width: 80px;
   gap: 20px;
+  padding: 0 20px;
 `;
 export const HoverableButton = styled.span`
   height: 20px;

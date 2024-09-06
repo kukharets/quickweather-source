@@ -52,6 +52,7 @@ export const PredictionItem = styled(TextBasic)`
 
 export const SearchInput = styled.input`
   background: none;
+  z-index: 99;
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.primaryLight};
   font-family: Roboto, Helvetica, Arial, sans-serif;

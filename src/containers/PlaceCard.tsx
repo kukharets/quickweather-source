@@ -1,16 +1,11 @@
-import {
-  actionToggleBookmarkPlace,
-  IGooglePlaceFull,
-  actionResetSelectedPlace,
-  actionSelectPlace,
-} from '@slices/app';
+import { actionToggleBookmarkPlace, IGooglePlaceFull, actionResetSelectedPlace, actionSelectPlace } from '@slices/app';
 import { TextLarge, theme } from '@root/App.styles';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsPlaceBookmarked } from '@selectors/app';
-import React from 'react';
+import React, { LegacyRef } from 'react';
 import { useWeather } from '@hooks/useWeather';
-import { WeatherSquareItem } from '../components/WeatherSquareItem';
+import { WeatherSquareItem } from '@components/WeatherSquareItem';
 import {
   CloseIcon,
   Divider,
@@ -22,22 +17,27 @@ import {
   PlaceControls,
   PlaceDescription,
   PlaceTitle,
-} from './PlaceCard.styles';
+} from '@containers/PlaceCard.styles';
 export const PlaceCard = ({
   data,
   isLoading,
   isFullVersion,
+  weatherRef,
 }: {
   data: IGooglePlaceFull;
   isFullVersion?: boolean;
   isLoading: boolean;
+  weatherRef?: LegacyRef<HTMLDivElement> | undefined;
 }) => {
   const dispatch = useDispatch();
 
   const isBookmarked = useSelector(selectIsPlaceBookmarked(data.place_id));
   const { isWeatherDataLoading, parsedWeatherData } = useWeather({ location: data });
 
-  const handleSelectPlace = () => dispatch(actionSelectPlace(data));
+  const handleSelectPlace = (e: { stopPropagation: () => void; preventDefault: () => void }) => {
+    e.stopPropagation();
+    dispatch(actionSelectPlace(data));
+  };
   const handleToggleBookmark = () => dispatch(actionToggleBookmarkPlace(data));
   const handleClosePlaceCard = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.stopPropagation();
@@ -51,11 +51,11 @@ export const PlaceCard = ({
           <FavoriteIcon onClick={handleToggleBookmark} $bookmarked={isBookmarked} />
           {isFullVersion && <CloseIcon onClick={handleClosePlaceCard} />}
         </PlaceControls>
-        <PlaceTitle>{data.structured_formatting.main_text}</PlaceTitle>
+        <PlaceTitle>{data.structured_formatting?.main_text}</PlaceTitle>
         {isFullVersion && (
           <>
             <Divider />
-            <PlaceDescription>{data.structured_formatting.secondary_text}</PlaceDescription>
+            <PlaceDescription>{data.structured_formatting?.secondary_text}</PlaceDescription>
           </>
         )}
         {!isFullVersion && (
@@ -66,7 +66,7 @@ export const PlaceCard = ({
         )}
       </PlaceCardHeader>
       {isFullVersion && (
-        <PlaceCardBody>
+        <PlaceCardBody ref={weatherRef}>
           {Object.values(parsedWeatherData)?.map((parsedWeatherDataItem) => (
             <WeatherSquareItem
               isLoading={isWeatherDataLoading || isLoading}

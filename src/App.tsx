@@ -1,4 +1,6 @@
-import { Header } from '@containers/Header';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { PlacesSearchAutocomplete } from '@containers/PlacesSearchAutocomplete';
 import {
   IGoogleAutocompletePredictionPlace,
@@ -6,17 +8,31 @@ import {
   actionSelectPlace,
   actionUpdateSelectedPlaceData,
 } from '@slices/app';
-import { useDispatch, useSelector } from 'react-redux';
-import { useGooglePlaces } from '@hooks/useGooglePlaces';
 import { selectBookmarkedPlaces, selectSelectedPlace } from '@selectors/app';
+import { useGooglePlaces } from '@hooks/useGooglePlaces';
 import { PlaceCard } from '@containers/PlaceCard';
-import { AppWrapper, BookmarkedPlacesWrapper, MainPageLayout } from './App.styles';
+import { AppWrapper, BookmarkedPlacesWrapper, MainPageLayout, SearchSectionWrapper } from './App.styles';
+import { createGlobalStyle } from 'styled-components';
+import { Header } from '@containers/Header';
+import { useSwipeAnimation } from '@hooks/useSwipeAnimation';
+
+const GlobalStyle = createGlobalStyle`
+    :root {
+        overscroll-behavior: none;
+    }
+`;
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { handleGetPlaceDetails, isLoading } = useGooglePlaces();
   const selectedPlace = useSelector(selectSelectedPlace);
   const bookmarkedPlaces = useSelector(selectBookmarkedPlaces);
+  const { handleGetPlaceDetails, isLoading } = useGooglePlaces();
+
+  const { placeCardRef, onTouchStart, onTouchMove, onTouchEnd, resetAnimation } = useSwipeAnimation();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {}, [selectedPlace, location.search, dispatch, history]);
 
   const handleSelectPlace = (place: IGooglePlaceFull | IGoogleAutocompletePredictionPlace) => {
     dispatch(actionSelectPlace(place));
@@ -27,14 +43,30 @@ export const App = () => {
     }
   };
 
+  useEffect(() => {
+    resetAnimation();
+    const searchParams = new URLSearchParams(location.search);
+    const placeId = searchParams.get('place_id');
+
+    if (placeId && !selectedPlace) {
+      handleSelectPlace({ place_id: placeId });
+    } else if (selectedPlace && !placeId) {
+      searchParams.set('place_id', selectedPlace.place_id);
+      navigate({ search: searchParams.toString() }, { replace: true });
+    }
+  }, [selectedPlace]);
+
   return (
-    <AppWrapper>
+    <AppWrapper onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+      <GlobalStyle />
       <Header />
       <MainPageLayout>
-        <div>
+        <SearchSectionWrapper>
           <PlacesSearchAutocomplete handleSelectPlace={handleSelectPlace} />
-          {!!selectedPlace && <PlaceCard isLoading={isLoading} isFullVersion data={selectedPlace} />}
-        </div>
+          {!!selectedPlace && (
+            <PlaceCard weatherRef={placeCardRef} isLoading={isLoading} isFullVersion data={selectedPlace} />
+          )}
+        </SearchSectionWrapper>
         <BookmarkedPlacesWrapper $isFullVariant={!selectedPlace}>
           {bookmarkedPlaces.map((placeData) => (
             <PlaceCard isLoading={isLoading} key={placeData.place_id} data={placeData} />
