@@ -8,6 +8,7 @@ import {
   actionSelectPlace,
   actionUpdateSelectedPlaceData,
 } from '@slices/app';
+
 import { selectBookmarkedPlaces, selectSelectedPlace } from '@selectors/app';
 import { useGooglePlaces } from '@hooks/useGooglePlaces';
 import { PlaceCard } from '@containers/PlaceCard';
@@ -28,11 +29,9 @@ export const App = () => {
   const bookmarkedPlaces = useSelector(selectBookmarkedPlaces);
   const { handleGetPlaceDetails, isLoading } = useGooglePlaces();
 
-  const { placeCardRef, onTouchStart, onTouchMove, onTouchEnd, resetAnimation } = useSwipeAnimation();
+  const { placeCardRef, onTouchStart, onTouchEnd, resetAnimation } = useSwipeAnimation();
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {}, [selectedPlace, location.search, dispatch, history]);
 
   const handleSelectPlace = (place: IGooglePlaceFull | IGoogleAutocompletePredictionPlace) => {
     dispatch(actionSelectPlace(place));
@@ -42,22 +41,25 @@ export const App = () => {
       });
     }
   };
+  const searchParams = new URLSearchParams(location.search);
+  const placeIdFromUrl = searchParams.get('place_id');
 
   useEffect(() => {
     resetAnimation();
-    const searchParams = new URLSearchParams(location.search);
-    const placeId = searchParams.get('place_id');
-
-    if (placeId && !selectedPlace) {
-      handleSelectPlace({ place_id: placeId });
-    } else if (selectedPlace && !placeId) {
+    if (selectedPlace && !placeIdFromUrl) {
       searchParams.set('place_id', selectedPlace.place_id);
       navigate({ search: searchParams.toString() }, { replace: true });
     }
   }, [selectedPlace]);
 
+  useEffect(() => {
+    if (placeIdFromUrl && !selectedPlace) {
+      handleSelectPlace({ place_id: placeIdFromUrl });
+    }
+  }, []);
+
   return (
-    <AppWrapper onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+    <AppWrapper onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <GlobalStyle />
       <Header />
       <MainPageLayout>

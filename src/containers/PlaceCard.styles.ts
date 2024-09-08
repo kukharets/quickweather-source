@@ -30,7 +30,11 @@ export const PlaceCardHeader = styled.div<{ $isFullVersion?: boolean }>`
   flex-direction: column;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-
+  @media (max-width: ${({ theme }) => theme.breakpoints.phone}) {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.4) !important;
+    }
+  }
   ${({ $isFullVersion }) =>
     !$isFullVersion &&
     `
@@ -41,7 +45,7 @@ export const PlaceCardHeader = styled.div<{ $isFullVersion?: boolean }>`
     padding-right: 30px;
     flex-direction: row;
     &:hover {
-      background-color: rgba(0, 0, 0, 0.6); // 
+      background-color: rgba(0, 0, 0, 0.6);
     }
   `}
 `;

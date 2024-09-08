@@ -18,6 +18,7 @@ import {
   PlaceDescription,
   PlaceTitle,
 } from '@containers/PlaceCard.styles';
+import { useLocation, useNavigate } from 'react-router-dom';
 export const PlaceCard = ({
   data,
   isLoading,
@@ -30,24 +31,32 @@ export const PlaceCard = ({
   weatherRef?: LegacyRef<HTMLDivElement> | undefined;
 }) => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
   const isBookmarked = useSelector(selectIsPlaceBookmarked(data.place_id));
   const { isWeatherDataLoading, parsedWeatherData } = useWeather({ location: data });
 
-  const handleSelectPlace = (e: { stopPropagation: () => void; preventDefault: () => void }) => {
-    e.stopPropagation();
+  const handleSelectPlace = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(actionSelectPlace(data));
   };
-  const handleToggleBookmark = () => dispatch(actionToggleBookmarkPlace(data));
-  const handleClosePlaceCard = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+
+  const handleToggleBookmark = (e: React.MouseEvent<SVGElement>) => {
     e.stopPropagation();
+    dispatch(actionToggleBookmarkPlace(data));
+  };
+
+  const handleClosePlaceCard = (e: React.MouseEvent<SVGElement>) => {
+    e.stopPropagation();
+    searchParams.delete('place_id');
+    navigate({ search: searchParams.toString() }, { replace: true });
     dispatch(actionResetSelectedPlace());
   };
 
   return (
     <PlaceCardWrapper>
       <PlaceCardHeader onClick={handleSelectPlace} $isFullVersion={isFullVersion}>
-        <PlaceControls>
+        <PlaceControls onTouchStart={(e) => e.stopPropagation()} onTouchEnd={(e) => e.stopPropagation()}>
           <FavoriteIcon onClick={handleToggleBookmark} $bookmarked={isBookmarked} />
           {isFullVersion && <CloseIcon onClick={handleClosePlaceCard} />}
         </PlaceControls>

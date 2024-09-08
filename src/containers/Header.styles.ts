@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
+  z-index: 99;
   display: flex;
   position: fixed;
   width: 100%;

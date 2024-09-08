@@ -2,19 +2,14 @@ import React, { useRef } from 'react';
 
 export const useSwipeAnimation = () => {
   const startY = useRef<number>(0);
-  const endY = useRef<number>(0);
   const placeCardRef = useRef<HTMLDivElement | null>(null);
 
   const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     startY.current = e.touches[0].clientY;
   };
 
-  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    endY.current = e.touches[0].clientY;
-  };
-
-  const onTouchEnd = () => {
-    const swipeDistance = startY.current - endY.current;
+  const onTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    const swipeDistance = startY.current - e.changedTouches[0].clientY;
 
     if (placeCardRef.current) {
       placeCardRef.current.style.transition = 'margin 0.3s ease, opacity 0.3s ease';
@@ -40,7 +35,6 @@ export const useSwipeAnimation = () => {
   return {
     placeCardRef,
     onTouchStart,
-    onTouchMove,
     onTouchEnd,
     resetAnimation,
   };

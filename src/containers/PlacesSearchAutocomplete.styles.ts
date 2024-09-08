@@ -15,6 +15,7 @@ export const PlacesSearchWrapper = styled.div`
 `;
 
 export const CloseIcon = styled(CrossIcon)`
+  z-index: 100;
   &:hover {
     animation: ${animations.rotate} 0.1s forwards;
   }
