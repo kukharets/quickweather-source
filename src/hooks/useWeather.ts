@@ -1,13 +1,16 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchPlaceWeather } from '@slices/weather';
 import { IGooglePlaceFull } from '@slices/app';
+
 import {
   selectPlaceWeatherByPlaceId,
   selectPlaceWeatherErrorByPlaceId,
   selectPlaceWeatherIsLoadingByPlaceId,
 } from '@selectors/weather';
-import { useEffect } from 'react';
-import { fetchPlaceWeather } from '@slices/weather';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '../store';
+import { AppDispatch } from '@root/store';
+
 import { parseWeather } from '@utils/parseWeatherData';
 
 export const useWeather = ({ location }: { location: IGooglePlaceFull }) => {

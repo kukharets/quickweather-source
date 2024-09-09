@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { createGlobalStyle, css, keyframes } from 'styled-components';
 import BackGroundIcon from '@assets/background.webp';
 
 export const animations = {
@@ -28,6 +28,12 @@ export const theme = {
     desktop: '1200px',
   },
 };
+
+export const GlobalStyle = createGlobalStyle`
+    :root {
+        overscroll-behavior: none;
+    }
+`;
 
 export const TextBasic = styled.span`
   font-family: Roboto, Helvetica, Arial, sans-serif;
@@ -59,6 +65,7 @@ export const BackGroundSvg = styled.svg`
   background-position: center center;
   background-size: contain;
 `;
+
 export const iconMixin = css`
   &:hover {
     animation: ${animations.rotate} 0.1s forwards;
@@ -67,6 +74,7 @@ export const iconMixin = css`
   height: 25px;
   width: 25px;
 `;
+
 export const ScrollableDiv = styled.div`
   overflow-y: scroll;
 
@@ -130,6 +138,7 @@ export const MainPageLayout = styled.div`
 `;
 
 export const BookmarkedPlacesWrapper = styled.div<{ $isFullVariant: boolean }>`
+  position: relative;
   max-height: calc(100vh - 100px);
   gap: 15px;
   display: flex;
@@ -138,7 +147,6 @@ export const BookmarkedPlacesWrapper = styled.div<{ $isFullVariant: boolean }>`
   flex-direction: column;
   @media (max-width: ${({ theme }) => theme.breakpoints.phone}) {
     margin-top: 100px;
-    overflow: scroll;
     padding: 0;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
@@ -148,4 +156,24 @@ export const BookmarkedPlacesWrapper = styled.div<{ $isFullVariant: boolean }>`
 `;
 export const SearchSectionWrapper = styled.div`
   margin-top: 55px;
+`;
+
+export const Legend = styled.div`
+  width: 100%;
+  height: 50px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 15px;
+  display: flex;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  border-radius: 100px 100px 0 0;
+  position: absolute;
+  top: -45px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.phone}) {
+    display: none;
+  }
+  span {
+    line-height: 20px;
+  }
 `;

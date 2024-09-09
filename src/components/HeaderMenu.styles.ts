@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
+
 import GitHubIcon from '@assets/github.svg';
 import LinkedInIcon from '@assets/in.png';
 import UpWorkIcon from '@assets/upwork.svg';
+
 import { TextBasic } from '@root/App.styles';
 
 const PositionedMenuBlock = css`
@@ -16,7 +18,6 @@ const PositionedMenuBlock = css`
   border-bottom-left-radius: 20px;
 `;
 
-// Стилі для Header меню
 export const HeaderMenuButtons = styled.span`
   display: flex;
   justify-content: end;

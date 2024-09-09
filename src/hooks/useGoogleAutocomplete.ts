@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import { IGoogleAutocompletePredictionPlace } from '@slices/app';
+
 import { useServices } from '@providers/ServicesProvider';
 
 export const useGoogleAutocomplete = () => {

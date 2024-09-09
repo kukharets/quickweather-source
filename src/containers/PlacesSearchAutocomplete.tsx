@@ -1,16 +1,17 @@
-/// <reference types="vite-plugin-svgr/client" />
 import React, { useLayoutEffect, useRef, useState } from 'react';
 
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import { useGoogleAutocomplete } from '@hooks/useGoogleAutocomplete';
+
 import { IGoogleAutocompletePredictionPlace, IGooglePlaceFull } from '@slices/app';
+
 import {
   CloseIcon,
   InputWrapper,
   PlacesSearchWrapper,
   PredictionItem,
   SearchInput,
-} from './PlacesSearchAutocomplete.styles';
+} from '@containers/PlacesSearchAutocomplete.styles';
 
 export const PlacesSearchAutocomplete = ({
   handleSelectPlace,

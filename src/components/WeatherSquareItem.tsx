@@ -1,6 +1,7 @@
 import { IWeatherDataItem } from '@utils/parseWeatherData';
+
 import { TextLarge } from '@root/App.styles';
-import { PlaceCardWeatherSquare, Spinner } from './WeatherSquareItem.styles';
+import { PlaceCardWeatherSquare, Spinner } from '@components/WeatherSquareItem.styles';
 
 export const WeatherSquareItem = ({ data, isLoading }: { data: IWeatherDataItem; isLoading: boolean }) => (
   <PlaceCardWeatherSquare $isLoading={isLoading}>

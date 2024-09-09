@@ -1,10 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { selectSelectedPlace } from '@selectors/app';
+
+import { HeaderMenu } from '@components/HeaderMenu';
+
+import { HeaderLegend, HeaderWrapper } from '@containers/Header.styles';
 import { TextLarge, TextSmall } from '@root/App.styles';
 import { theme } from '@root/App.styles';
-import { HeaderMenu } from '@components/HeaderMenu';
-import { useSelector } from 'react-redux';
-import { selectSelectedPlace } from '@selectors/app';
-import { HeaderLegend, HeaderWrapper } from './Header.styles';
+
 export const Header = () => {
   const selectedPlace = useSelector(selectSelectedPlace);
 

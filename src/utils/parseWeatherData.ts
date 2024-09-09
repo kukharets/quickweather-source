@@ -1,4 +1,7 @@
+import React from 'react';
+
 import { WeatherData } from '@slices/weather';
+
 import {
   DayCloud0,
   DayCloud1,
@@ -27,11 +30,10 @@ import {
   Wind,
   Temperature,
   Humidity,
-} from '../icons';
-import React from 'react';
+} from '@root/icons';
 
 export interface IWeatherDataItem {
-  image: React.FunctionComponent<React.SVGProps<SVGSVGElement>>; // Це тип для React-компонентів SVG
+  image: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   value: string;
   title: string;
 }

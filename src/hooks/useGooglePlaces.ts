@@ -1,6 +1,8 @@
-import { useServices } from '@providers/ServicesProvider';
-import { IGoogleAutocompletePredictionPlace } from '@slices/app';
 import { useState } from 'react';
+
+import { useServices } from '@providers/ServicesProvider';
+
+import { IGoogleAutocompletePredictionPlace } from '@slices/app';
 
 export const useGooglePlaces = () => {
   const [isLoading, setIsLoading] = useState(false);

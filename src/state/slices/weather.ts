@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { IGooglePlaceFull } from './app';
+
+import { IGooglePlaceFull } from '@slices/app';
+
 export interface WeatherData {
   clouds: {
     all: number;

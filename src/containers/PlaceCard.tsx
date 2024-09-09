@@ -1,11 +1,15 @@
-import { actionToggleBookmarkPlace, IGooglePlaceFull, actionResetSelectedPlace, actionSelectPlace } from '@slices/app';
-import { TextLarge, theme } from '@root/App.styles';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIsPlaceBookmarked } from '@selectors/app';
 import React, { LegacyRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { actionToggleBookmarkPlace, IGooglePlaceFull, actionResetSelectedPlace, actionSelectPlace } from '@slices/app';
+
+import { selectIsPlaceBookmarked } from '@selectors/app';
+
 import { useWeather } from '@hooks/useWeather';
 import { WeatherSquareItem } from '@components/WeatherSquareItem';
+
+import { TextLarge, theme } from '@root/App.styles';
 import {
   CloseIcon,
   Divider,
@@ -18,7 +22,7 @@ import {
   PlaceDescription,
   PlaceTitle,
 } from '@containers/PlaceCard.styles';
-import { useLocation, useNavigate } from 'react-router-dom';
+
 export const PlaceCard = ({
   data,
   isLoading,

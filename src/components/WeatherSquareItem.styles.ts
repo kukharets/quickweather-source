@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import SpinnerSvg from '@assets/spinner.svg?react';
 
 export const Spinner = styled(SpinnerSvg)`

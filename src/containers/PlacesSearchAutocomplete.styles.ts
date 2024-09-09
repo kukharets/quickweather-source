@@ -2,6 +2,7 @@
 import CrossIcon from '@assets/cross-circle.svg?react';
 
 import styled from 'styled-components';
+
 import { animations, TextBasic } from '@root/App.styles';
 
 export const PlacesSearchWrapper = styled.div`
@@ -63,8 +64,8 @@ export const SearchInput = styled.input`
   padding-left: 5px;
   padding-right: 30px;
   color: ${({ theme }) => theme.colors.white};
-  width: 100%; /* Забезпечує, що input розтягується на всю ширину контейнера */
-  box-sizing: border-box; /* Включає padding та border у загальну ширину */
+  width: 100%;
+  box-sizing: border-box;
   &:focus {
     outline: none;
   }

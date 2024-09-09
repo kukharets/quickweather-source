@@ -1,12 +1,15 @@
 import { createRoot } from 'react-dom/client';
-import { App } from '@root/App';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '@root/App.styles';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './store';
 import { Provider } from 'react-redux';
-import { ServicesProvider } from '@providers/ServicesProvider';
 import { BrowserRouter } from 'react-router-dom';
+
+import { App } from '@root/App';
+
+import { ServicesProvider } from '@providers/ServicesProvider';
+import { store, persistor } from '@root/store';
+
+import { theme } from '@root/App.styles';
 
 createRoot(document.getElementById('root')!).render(
   <ThemeProvider theme={theme}>

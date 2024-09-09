@@ -1,9 +1,10 @@
 /// <reference types="vite-plugin-svgr/client" />
-
 import styled from 'styled-components';
-import { iconMixin, TextLarge, TextSmall } from '@root/App.styles';
+
 import CloseSvg from '@assets/close.svg?react';
 import StarSvg from '@assets/star.svg?react';
+
+import { iconMixin, TextLarge, TextSmall } from '@root/App.styles';
 
 export const CloseIcon = styled(CloseSvg)`
   ${iconMixin}
