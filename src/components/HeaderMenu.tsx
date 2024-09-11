@@ -24,7 +24,7 @@ import {
   ShareBlockWrapper,
   ShareIconsWrapper,
   SocialIcon,
-} from './HeaderMenu.styles';
+} from '@components/HeaderMenu.styles';
 
 import { useOutsideClick } from '@hooks/useOutsideClick';
 

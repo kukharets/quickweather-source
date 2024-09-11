@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectSelectedPlace } from '@selectors/app';
-
 import { HeaderMenu } from '@components/HeaderMenu';
 
 import { HeaderLegend, HeaderWrapper } from '@containers/Header.styles';

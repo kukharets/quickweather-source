@@ -1,5 +1,4 @@
 import { IWeatherDataItem } from '@utils/parseWeatherData';
-
 import { TextLarge } from '@root/App.styles';
 import { PlaceCardWeatherSquare, Spinner } from '@components/WeatherSquareItem.styles';
 

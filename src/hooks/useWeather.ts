@@ -13,18 +13,18 @@ import { AppDispatch } from '@root/store';
 
 import { parseWeather } from '@utils/parseWeatherData';
 
-export const useWeather = ({ location }: { location: IGooglePlaceFull }) => {
+export const useWeather = ({ location: { place_id, coordinates } }: { location: IGooglePlaceFull }) => {
   const dispatch: AppDispatch = useDispatch();
-  const { place_id } = location;
+
   const isWeatherDataLoading = useSelector(selectPlaceWeatherIsLoadingByPlaceId(place_id));
   const weatherError = useSelector(selectPlaceWeatherErrorByPlaceId(place_id));
-
   const weatherData = useSelector(selectPlaceWeatherByPlaceId(place_id));
+
   const parsedWeatherData = parseWeather(weatherData);
 
   useEffect(() => {
-    if (location.coordinates) {
-      dispatch(fetchPlaceWeather(location));
+    if (coordinates) {
+      dispatch(fetchPlaceWeather({ place_id, coordinates }));
     }
   }, [location]);
 

@@ -27,6 +27,7 @@ import {
   SearchSectionWrapper,
   TextBasic,
   TextSmall,
+  theme,
 } from '@root/App.styles';
 
 export const App = () => {
@@ -78,8 +79,8 @@ export const App = () => {
         <BookmarkedPlacesWrapper $isFullVariant={!selectedPlace}>
           {bookmarkedPlaces.length > 2 && (
             <Legend ref={legendRef}>
-              <TextSmall color={'white'}>Swipe to expand</TextSmall>
-              <TextBasic color={'white'}>^</TextBasic>
+              <TextSmall color={theme.colors.primaryLight}>Swipe to expand</TextSmall>
+              <TextBasic color={theme.colors.primaryLight}>^</TextBasic>
             </Legend>
           )}
           {bookmarkedPlaces.map((placeData) => (

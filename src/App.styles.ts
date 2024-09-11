@@ -121,7 +121,7 @@ export const MainPageLayout = styled.div`
   }
   overflow: hidden;
   padding: 0 20px;
-  height: calc(100vh - 75px);
+  height: 100vh;
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     flex-direction: column;
   }
@@ -156,6 +156,9 @@ export const BookmarkedPlacesWrapper = styled.div<{ $isFullVariant: boolean }>`
 `;
 export const SearchSectionWrapper = styled.div`
   margin-top: 55px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.phone}) {
+    margin-top: 75px;
+  }
 `;
 
 export const Legend = styled.div`

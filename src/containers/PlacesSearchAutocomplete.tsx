@@ -2,9 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 
 import { useOutsideClick } from '@hooks/useOutsideClick';
 import { useGoogleAutocomplete } from '@hooks/useGoogleAutocomplete';
-
 import { IGoogleAutocompletePredictionPlace, IGooglePlaceFull } from '@slices/app';
-
 import {
   CloseIcon,
   InputWrapper,

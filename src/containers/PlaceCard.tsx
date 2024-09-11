@@ -39,9 +39,10 @@ export const PlaceCard = ({
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const isBookmarked = useSelector(selectIsPlaceBookmarked(data.place_id));
+
   const { isWeatherDataLoading, parsedWeatherData } = useWeather({ location: data });
 
-  const handleSelectPlace = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleSelectPlace = () => {
     dispatch(actionSelectPlace(data));
   };
 

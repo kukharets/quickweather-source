@@ -40,11 +40,11 @@ const initialState: WeatherState = {
 };
 export const fetchPlaceWeather = createAsyncThunk<WeatherData, IGooglePlaceFull>(
   'weather/fetchPlaceWeather',
-  async (place: IGooglePlaceFull) => {
-    if (!place.coordinates) {
+  async ({ coordinates }: IGooglePlaceFull) => {
+    if (!coordinates) {
       throw new Error('Coordinates not available');
     }
-    const { lat, lng } = place.coordinates;
+    const { lat, lng } = coordinates;
     const response = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&APPID=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}`,
     );
