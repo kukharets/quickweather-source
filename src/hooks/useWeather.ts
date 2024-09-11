@@ -23,7 +23,7 @@ export const useWeather = ({ location }: { location: IGooglePlaceFull }) => {
   const parsedWeatherData = parseWeather(weatherData);
 
   useEffect(() => {
-    if (location.coordinates && !weatherData) {
+    if (location.coordinates) {
       dispatch(fetchPlaceWeather(location));
     }
   }, [location]);
