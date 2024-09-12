@@ -143,10 +143,6 @@ export const BookmarkedPlacesWrapper = styled.div<{ $isFullVariant: boolean }>`
   gap: 15px;
   display: flex;
   margin-top: 85px;
-  svg {
-    opacity: 0.1;
-    height: 20px;
-  }
   flex-direction: column;
   @media (max-width: ${({ theme }) => theme.breakpoints.phone}) {
     margin-top: 100px;
@@ -182,5 +178,9 @@ export const Legend = styled.div`
   top: -45px;
   span {
     line-height: 20px;
+  }
+  svg {
+    opacity: 0.1;
+    height: 20px;
   }
 `;
