@@ -143,7 +143,10 @@ export const BookmarkedPlacesWrapper = styled.div<{ $isFullVariant: boolean }>`
   gap: 15px;
   display: flex;
   margin-top: 85px;
-
+  svg {
+    opacity: 0.1;
+    height: 20px;
+  }
   flex-direction: column;
   @media (max-width: ${({ theme }) => theme.breakpoints.phone}) {
     margin-top: 100px;
@@ -154,6 +157,7 @@ export const BookmarkedPlacesWrapper = styled.div<{ $isFullVariant: boolean }>`
     min-height: 0;
   }
 `;
+
 export const SearchSectionWrapper = styled.div`
   margin-top: 55px;
   @media (min-width: ${({ theme }) => theme.breakpoints.phone}) {
@@ -162,20 +166,20 @@ export const SearchSectionWrapper = styled.div`
 `;
 
 export const Legend = styled.div`
+  @media (min-width: ${({ theme }) => theme.breakpoints.phone}) {
+    opacity: 0;
+  }
   width: 100%;
   height: 50px;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 15px;
+  justify-content: flex-start;
+  padding: 5px 0 15px;
   display: flex;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
   border-radius: 100px 100px 0 0;
   position: absolute;
   top: -45px;
-  @media (min-width: ${({ theme }) => theme.breakpoints.phone}) {
-    display: none;
-  }
   span {
     line-height: 20px;
   }
