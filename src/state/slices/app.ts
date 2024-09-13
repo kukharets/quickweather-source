@@ -28,9 +28,9 @@ const appSlice = createSlice({
     actionSelectPlace(state, action: PayloadAction<IGoogleAutocompletePredictionPlace>) {
       state.selectedPlace = action.payload;
     },
-    actionUpdateSelectedPlaceData(state, action: PayloadAction<{ lat: number; lng: number }>) {
+    actionUpdateSelectedPlaceData(state, action: PayloadAction<IGooglePlaceFull>) {
       if (state.selectedPlace) {
-        state.selectedPlace = { ...state.selectedPlace, coordinates: action.payload };
+        state.selectedPlace = { ...state.selectedPlace, ...action.payload };
       }
     },
     actionResetSelectedPlace(state) {

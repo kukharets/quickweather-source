@@ -1,8 +1,10 @@
 /// <reference types="vite-plugin-svgr/client" />
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ArrowUpIcon from '@assets/arrowup.svg?react';
+
+import { useServices } from '@providers/ServicesProvider';
 
 import { PlacesSearchAutocomplete } from '@containers/PlacesSearchAutocomplete';
 import { PlaceCard } from '@containers/PlaceCard';
@@ -35,18 +37,18 @@ export const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-
   const selectedPlace = useSelector(selectSelectedPlace);
   const bookmarkedPlaces = useSelector(selectBookmarkedPlaces);
+  const { placesService } = useServices();
 
   const { handleGetPlaceDetails, isLoading } = useGooglePlaces();
   const { placeCardRef, legendRef, onTouchStart, onTouchEnd, resetAnimation } = useSwipeAnimation();
 
   const handleSelectPlace = (place: IGooglePlaceFull | IGoogleAutocompletePredictionPlace) => {
     dispatch(actionSelectPlace(place));
-    if (!('coordinates' in place) || !place.coordinates) {
-      handleGetPlaceDetails(place).then((coordinates) => {
-        dispatch(actionUpdateSelectedPlaceData(coordinates));
+    if (!('coordinates' in place)) {
+      handleGetPlaceDetails(place).then((fullData) => {
+        dispatch(actionUpdateSelectedPlaceData(fullData));
       });
     }
   };
@@ -61,11 +63,11 @@ export const App = () => {
     }
   }, [selectedPlace]);
 
-  useEffect(() => {
-    if (placeIdFromUrl && !selectedPlace) {
+  useLayoutEffect(() => {
+    if (placeIdFromUrl && !selectedPlace && placesService) {
       handleSelectPlace({ place_id: placeIdFromUrl });
     }
-  }, []);
+  }, [placesService]);
 
   return (
     <AppWrapper onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>

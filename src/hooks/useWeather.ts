@@ -26,7 +26,7 @@ export const useWeather = ({ location: { place_id, coordinates } }: { location: 
     if (coordinates) {
       dispatch(fetchPlaceWeather({ place_id, coordinates }));
     }
-  }, [location]);
+  }, [coordinates]);
 
   return { parsedWeatherData, isWeatherDataLoading, weatherError };
 };
